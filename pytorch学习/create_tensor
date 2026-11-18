@@ -1,0 +1,27 @@
+import torch
+x1 = torch.rand(4, 3)#随机矩阵
+x2 = torch.zeros(4, 3, dtype=torch.long)#全0矩阵
+x3 = torch.tensor(5.5, 3)
+print(x1)
+y = y.mew_ones(4, 3, dtype=torch.double)
+y1 = torch.randn_like(y, dtype=torch.float)#重置数据类型
+#加法操作（打印中直接相加、add函数、in-place,原值修改）
+print(x1 + x2)
+print(torch.add(x1, x2))
+x1.add(x2)
+print(x2)
+#索引操作
+#索引出来的结果与原数据共享内存，修改一个，另一个会跟着修改。
+#如果不想修改，可以考虑使用copy()等方法
+#取第二列
+print(x1[:, 1])
+x4 = x1[0, :]
+x4 +=1
+#维度变换 张量的维度变换常见的方法有torch.view()和torch.reshape()
+x5 = x2.view(16)
+x6 = x2.view(-1, 8)# -1是指这一维的维数由其他维度决定
+#torch.view() 返回的新tensor与源tensor共享内存(其实是同一个tensor)，更改其中的一个，另外一个也会跟着改变。
+
+#广播机制
+#当对两个形状不同的 Tensor 按元素运算时，可能会触发广播(broadcasting)
+# 机制：先适当复制元素使这两个 Tensor 形状相同后再按元素运算。
